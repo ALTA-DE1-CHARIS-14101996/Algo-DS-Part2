@@ -1,5 +1,21 @@
 def count_item_and_sort(items):
-    result = ""
+    kamus = {}
+    
+    for i in items:
+        if i in kamus:
+            kamus[i] += 1
+        else:
+            kamus[i] = 1
+    values = list(kamus.values())
+    if len(set(values)) == len(values):
+    # Jika semua nilai unik, maka urutkan berdasarkan nilai
+        dict_sort = dict(sorted(kamus.items(), key=lambda item: item[1]))
+    else:
+    # Jika ada nilai yang sama, maka urutkan berdasarkan key
+        dict_sort = dict(sorted(kamus.items(), key=lambda item: item[0]))        
+        
+    result = ' '.join([f"{key}->{value}" for key, value in dict_sort.items()])
+    
     return result
 
 if __name__ == "__main__":

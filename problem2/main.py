@@ -1,5 +1,13 @@
 def maximum_buy_product(money, product_price):
-    return 0
+    product_price.sort()  # Mengurutkan harga produk dari yang terendah
+    count = 0
+    for price in product_price:
+        if money >= price:
+            money -= price
+            count += 1
+        else:
+            break
+    return count
 
 if __name__ == "__main__":
     print(maximum_buy_product(50000, [25000, 25000, 10000, 14000]))      # 3
